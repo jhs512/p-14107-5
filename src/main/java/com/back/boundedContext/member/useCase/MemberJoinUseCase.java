@@ -4,8 +4,10 @@ import com.back.boundedContext.member.domain.Member;
 import com.back.boundedContext.member.out.MemberRepository;
 import com.back.global.exception.DomainException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+@Profile("member")
 @Service
 @RequiredArgsConstructor
 public class MemberJoinUseCase {

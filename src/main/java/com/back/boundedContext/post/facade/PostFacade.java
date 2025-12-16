@@ -4,8 +4,10 @@ import com.back.boundedContext.post.domain.PostMember;
 import com.back.boundedContext.post.out.PostMemberRepository;
 import com.back.shared.member.event.MemberJoinEvent;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
+@Profile("post")
 @Service
 @RequiredArgsConstructor
 public class PostFacade {
