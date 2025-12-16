@@ -3,6 +3,12 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+  redis-insight:
+    image: redis/redisinsight:latest
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis
 
   redpanda:
     image: docker.redpanda.com/redpandadata/redpanda:latest
@@ -18,8 +24,7 @@ services:
     ports:
       - "19092:19092"
       - "9644:9644"
-
-  console:
+  redpanda-console:
     image: docker.redpanda.com/redpandadata/console:latest
     ports:
       - "8090:8080"
