@@ -4,6 +4,7 @@ import com.back.boundedContext.post.facade.PostFacade;
 import com.back.shared.member.event.MemberJoinEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Profile;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import tools.jackson.databind.ObjectMapper;
 
@@ -14,8 +15,10 @@ public class PostEventListener {
     private final PostFacade postFacade;
     private final ObjectMapper objectMapper;
 
-    public void handlePostEvent(String message) throws Exception {
+    @KafkaListener(topics = "member-join-topic", groupId = "post")
+    public void handlePostEvent(String message) {
         MemberJoinEvent event = objectMapper.readValue(message, MemberJoinEvent.class);
-        postFacade.syncMember(event);
+
+        System.out.println(event);
     }
 }

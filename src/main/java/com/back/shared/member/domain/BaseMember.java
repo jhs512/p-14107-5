@@ -3,10 +3,12 @@ package com.back.shared.member.domain;
 import com.back.global.jpa.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @MappedSuperclass
 @NoArgsConstructor
+@Getter
 public class BaseMember extends BaseEntity {
     @Column(unique = true)
     private String username;
